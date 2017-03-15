@@ -8,11 +8,15 @@
   <sprites name="sprites">
     <sprite>sprites\spr_rock</sprite>
     <sprite>sprites\spr_dirt</sprite>
+    <sprite>sprites\spr_hardDirt</sprite>
     <sprite>sprites\spr_dirtGrass</sprite>
     <sprite>sprites\spr_wormSegment</sprite>
     <sprite>sprites\spr_wormSegmentConnector</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bkr_testSky</background>
+    <background>background\background1</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_rock</object>
@@ -20,6 +24,7 @@
     <object>objects\obj_dirtGrass</object>
     <object>objects\obj_wormSegment</object>
     <object>objects\obj_worm</object>
+    <object>objects\obj_joint</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_gameScreen</room>

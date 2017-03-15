@@ -2,8 +2,8 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>0</depth>
+  <visible>0</visible>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,42 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (instance_create(x,y,obj_wormSegment)) {
+            <string>tail = noone;
+head = noone;
+newDirection = 0;
+wormSpeed = 4;
+turningUp = undefined;
+
+with (instance_create(x,y,obj_wormSegment)) {
     parent = other.id;
     first = true;
+    other.tail = self;
+    other.head = self;
 }
 
-alarm[0] = 45;
+alarm[0] = 1;
+dirtEaten = 0;
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>101</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>111101111</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>4</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -77,7 +63,28 @@ alarm[0] = 45;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 45;
+            <string>alarm[0] = 180;
+newDirection = 1;
+//show_message(string(direction));
+while (newDirection % 4 != 0) {
+    newDirection = (round(random_range(0,361)));
+}
+//show_message(string(newDirection));
+turningUp = undefined;
+speed = 2;
+
+
+
+
+
+
+//rand1 = random_range(-50,60);
+//rand2 = random_range(-50,60);
+
+//physics_apply_force(x,y, rand1, rand2);
+//image_angle = point_direction(x,y, x+rand1, y+rand2);
+
+
 </string>
           </argument>
         </arguments>
@@ -100,8 +107,72 @@ alarm[0] = 45;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_position(x,y, obj_rock) &amp;&amp; alarm[0] &gt; 1 || instance_position(x,y, obj_dirtGrass) &amp;&amp; alarm[0] &gt; 1)
-    direction = point_direction(x,y, room_width/2, room_height/2);
+            <string>if (instance_position(x,y, obj_rock) &amp;&amp; alarm[0] &gt; 1 &amp;&amp; speed &gt; 2 || instance_position(x,y, obj_dirtGrass) &amp;&amp; alarm[0] &gt; 1 &amp;&amp; speed &gt; 2) {
+    newDirection = round(point_direction(x,y, room_width/2, room_height/2 + round(random_range(0,257))));
+    while (newDirection % 4 != 0)
+        newDirection -= 1;
+    turningUp = undefined;
+    speed = 2;
+    alarm[0] = 180;
+}
+if (direction = newDirection) {
+    //show_message("youre up");
+    //direction = choose(direction-1, direction, direction+1);
+    image_angle = direction;
+    speed = wormSpeed;
+    turningUp = undefined;
+}
+else {
+if (speed &lt;= 2 &amp;&amp; turningUp = undefined) {
+    if (abs(direction - newDirection) &lt; 180) {
+        direction += 4;
+        image_angle = direction;
+        turningUp = true;
+    }
+    else if (abs(direction - newDirection) &gt;= 180) {
+        direction -= 4;
+        image_angle = direction;
+        turningUp = false;
+    }
+    if (direction = newDirection) {
+        speed = wormSpeed;
+        turningUp = undefined;
+    }
+}
+if (turningUp != undefined) {
+    if (turningUp) {
+        //show_message(string(direction));
+        direction += 4;
+        image_angle = direction;
+    }
+    else if (!turningUp) {
+        direction -= 4;
+        image_angle = direction;
+    }
+    if (direction = newDirection) {
+        speed = wormSpeed;
+        turningUp = undefined;
+    }
+    
+}
+}
+
+    
+/*if (speed &gt; 0) {
+    dirtEaten += 1;
+    
+    if (dirtEaten &gt; 160) {
+        show_message("Daddy's Ready to Blow!");
+        dirtEaten = 0;
+        oldAngle = tail.image_angle;
+        tail.image_angle = 0;
+        
+        with (instance_create(x - 16, y, obj_wormSegment)) {
+            physics_joint_rope_create(self, other.tail, x,y, x,y, 8, 0);
+            other.tail = self;
+        }
+    }    
+}
 </string>
           </argument>
         </arguments>
