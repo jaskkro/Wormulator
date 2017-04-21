@@ -6,12 +6,27 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_rock</sprite>
-    <sprite>sprites\spr_dirt</sprite>
-    <sprite>sprites\spr_hardDirt</sprite>
-    <sprite>sprites\spr_dirtGrass</sprite>
-    <sprite>sprites\spr_wormSegment</sprite>
-    <sprite>sprites\spr_wormSegmentConnector</sprite>
+    <sprites name="Terrain">
+      <sprite>sprites\spr_dirtGrass</sprite>
+      <sprite>sprites\spr_hardDirt</sprite>
+      <sprite>sprites\spr_dirt</sprite>
+      <sprite>sprites\spr_rock</sprite>
+    </sprites>
+    <sprites name="Worms">
+      <sprite>sprites\spr_wormSegmentConnector</sprite>
+      <sprite>sprites\spr_wormSegment</sprite>
+    </sprites>
+    <sprites name="Character Select Menu">
+      <sprite>sprites\spr_charSelectBg</sprite>
+      <sprite>sprites\spr_chadPortrait</sprite>
+      <sprite>sprites\spr_rightArrow</sprite>
+      <sprite>sprites\spr_leftArrow</sprite>
+      <sprite>sprites\spr_chadName</sprite>
+      <sprite>sprites\spr_charSelectTitle</sprite>
+      <sprite>sprites\spr_circle</sprite>
+      <sprite>sprites\spr_circleFill</sprite>
+      <sprite>sprites\spr_wormulatorLogo</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bkr_testSky</background>
@@ -19,14 +34,29 @@
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_rock</object>
-    <object>objects\obj_dirt</object>
-    <object>objects\obj_dirtGrass</object>
-    <object>objects\obj_wormSegment</object>
-    <object>objects\obj_worm</object>
-    <object>objects\obj_joint</object>
+    <objects name="Main Game">
+      <object>objects\obj_rock</object>
+      <object>objects\obj_dirt</object>
+      <object>objects\obj_dirtGrass</object>
+      <object>objects\obj_wormSegment</object>
+      <object>objects\obj_worm</object>
+      <object>objects\obj_joint</object>
+    </objects>
+    <objects name="Character Select">
+      <object>objects\obj_arrow</object>
+      <object>objects\obj_rightArrow</object>
+      <object>objects\obj_leftArrow</object>
+      <object>objects\obj_outerCircle</object>
+      <object>objects\obj_circleFill</object>
+      <object>objects\obj_chadPortrait</object>
+      <object>objects\obj_charSelect</object>
+      <object>objects\obj_chadName</object>
+      <object>objects\obj_wormulatorLogo</object>
+      <object>objects\obj_charSelectBg</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_charSelect</room>
     <room>rooms\rm_gameScreen</room>
   </rooms>
   <help>
