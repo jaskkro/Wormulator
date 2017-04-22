@@ -22,10 +22,20 @@
       <sprite>sprites\spr_rightArrow</sprite>
       <sprite>sprites\spr_leftArrow</sprite>
       <sprite>sprites\spr_chadName</sprite>
+      <sprite>sprites\spr_playCharScreen</sprite>
       <sprite>sprites\spr_charSelectTitle</sprite>
       <sprite>sprites\spr_circle</sprite>
       <sprite>sprites\spr_circleFill</sprite>
+      <sprite>sprites\spr_traitbg</sprite>
       <sprite>sprites\spr_wormulatorLogo</sprite>
+    </sprites>
+    <sprites name="Main Menu">
+      <sprite>sprites\spr_play</sprite>
+      <sprite>sprites\spr_instructions</sprite>
+      <sprite>sprites\spr_mainMenu</sprite>
+    </sprites>
+    <sprites name="Instructions">
+      <sprite>sprites\spr_instructionsBackground</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -53,11 +63,24 @@
       <object>objects\obj_chadName</object>
       <object>objects\obj_wormulatorLogo</object>
       <object>objects\obj_charSelectBg</object>
+      <object>objects\obj_traitbg</object>
+      <object>objects\obj_playCharScreen</object>
+    </objects>
+    <objects name="Main Menu">
+      <object>objects\obj_play</object>
+      <object>objects\obj_instructions</object>
+      <object>objects\obj_mainMenu</object>
+    </objects>
+    <objects name="Instructions">
+      <object>objects\obj_instructionsBackground</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_mainMenu</room>
+    <room>rooms\rm_instructions</room>
     <room>rooms\rm_charSelect</room>
     <room>rooms\rm_gameScreen</room>
+    <room>rooms\rm_results</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
