@@ -49,6 +49,7 @@
       <object>objects\obj_dirt</object>
       <object>objects\obj_dirtGrass</object>
       <object>objects\obj_wormSegment</object>
+      <object>objects\obj_newWorm</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_joint</object>
     </objects>
