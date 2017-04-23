@@ -195,7 +195,13 @@
     <instance objName="obj_dirtGrass" x="608" y="544" name="inst_F86D0353" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dirtGrass" x="672" y="544" name="inst_BAB02EE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dirtGrass" x="736" y="544" name="inst_85DBD8E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_worm" x="352" y="768" name="inst_78B33BF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newWorm" x="416" y="800" name="inst_599D1BAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newWorm" x="416" y="1056" name="inst_51ECAA55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newWorm" x="192" y="960" name="inst_C8C9B698" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newWorm" x="640" y="832" name="inst_67C75673" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_newWorm" x="224" y="736" name="inst_F0872EA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_soundler" x="0" y="0" name="inst_D2BC86D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warButton" x="672" y="1184" name="inst_5E2E9423" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

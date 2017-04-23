@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\msc_classical</sound>
+    <sound>sound\msc_metal</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Terrain">
       <sprite>sprites\spr_dirtGrass</sprite>
@@ -15,6 +18,7 @@
     <sprites name="Worms">
       <sprite>sprites\spr_wormSegmentConnector</sprite>
       <sprite>sprites\spr_wormSegment</sprite>
+      <sprite>sprites\spr_wormSelected</sprite>
     </sprites>
     <sprites name="Character Select Menu">
       <sprite>sprites\spr_charSelectBg</sprite>
@@ -37,6 +41,7 @@
     <sprites name="Instructions">
       <sprite>sprites\spr_instructionsBackground</sprite>
     </sprites>
+    <sprite>sprites\spr_warButton</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkr_testSky</background>
@@ -52,6 +57,8 @@
       <object>objects\obj_newWorm</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_joint</object>
+      <object>objects\obj_soundler</object>
+      <object>objects\obj_warButton</object>
     </objects>
     <objects name="Character Select">
       <object>objects\obj_arrow</object>
@@ -77,10 +84,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_gameScreen</room>
     <room>rooms\rm_mainMenu</room>
     <room>rooms\rm_instructions</room>
     <room>rooms\rm_charSelect</room>
-    <room>rooms\rm_gameScreen</room>
     <room>rooms\rm_results</room>
   </rooms>
   <help>

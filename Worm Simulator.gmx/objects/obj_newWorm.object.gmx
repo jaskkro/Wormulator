@@ -27,11 +27,19 @@
             <kind>1</kind>
             <string>passive = true;
 readyToLaunch = false;
+movingToLaunch = false;
 flying = false;
+stuckToBird = false;
+
+//Movement
+destXX = 0;
+destYY = 0;
+wormSpeed = 3;
 
 //Size tracking
-size = 1;
+size = choose(1,2,3);
 counter = 0;
+fullGrown = false;
 
 
 </string>
@@ -56,9 +64,47 @@ counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch) {
+    destXX = random_range(0, room_width);
+    destXX = destXX - destXX % 4;
+    destYY = random_range(512, room_height);
+    destYY = destYY - destYY % 4;
+    move_towards_point(destXX, destYY, wormSpeed);
+    image_angle = direction;
+}
 
+if (speed &gt; 0 &amp;&amp; !flying &amp;&amp; !fullGrown) {
+    counter += 1;
+    if (counter &gt; 90) {
+        size += 1;
+        counter = 0;
+    }
+    if (size = 10) {
+        fullGrown = true;
+    }
+    if (fullGrown) {
+        rand = random(3);
+        if (rand &gt; 2) {
+            movingToLaunch = true;
+            destXX = random_range(0, room_width);
+            destXX = destXX - destXX % 4;
+            destYY = 512;
+            move_towards_point(destXX, destYY, wormSpeed);
+            image_angle = direction;
+        }
+        else {
+            fullGrown = false;
+            size = choose(1,2,3);
+            instance_create(x,y, obj_newWorm);
+        }
+    }
+}
 
+if (movingToLaunch &amp;&amp; point_distance(x,y, destXX, destYY) &lt; 6) {
+    speed = 0;
+    movingToLaunch = false;
+    readyToLaunch = true;
+}
 </string>
           </argument>
         </arguments>
