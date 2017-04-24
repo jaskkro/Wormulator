@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>birdHealth = 100//random_range(18, 40);
+            <string>birdHealth = 300//random_range(18, 40);
 target = noone;
 idle = true;
-birdSpeed = 6;
+birdSpeed = 8;
 destXX = 0;
 destYY = 0;
 waiting = false;

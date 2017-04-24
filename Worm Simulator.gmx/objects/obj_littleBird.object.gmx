@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>birdHealth = random_range(18, 40);
+            <string>birdHealth = random_range(25, 65);
 target = noone;
 idle = true;
 birdSpeed = 6;
