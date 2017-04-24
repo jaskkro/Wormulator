@@ -31,6 +31,10 @@ movingToLaunch = false;
 flying = false;
 stuckToBird = false;
 selected = false;
+myBirdNow = noone;
+image_speed = .2;
+myHealth = 30;
+dead = false;
 
 //Movement
 destXX = 0;
@@ -65,7 +69,79 @@ fullGrown = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch &amp;&amp; !global.war) {
+            <string>///Flying
+
+if (instance_exists(obj_flyArrow) &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; selected &amp;&amp; !flying) {
+    move_towards_point(obj_flyArrow.x, obj_flyArrow.y, random_range(9, 15));
+    direction = direction + (random_range(-24,24) * global.accuracy);
+    obj_flyArrow.alarm[0] = 1;
+    flying = true;
+    sprite_index = spr_wormSegment;
+}
+
+if (readyToLaunch &amp;&amp; !flying) {
+    if (point_distance(mouse_x, mouse_y, x, y) &lt; 16 &amp;&amp; mouse_check_button_released(mb_left)) {
+        selected = true;
+        sprite_index = spr_wormSelected;
+        if (!instance_exists(obj_flyArrow)) {
+            with (instance_create(mouse_x, mouse_y, obj_flyArrow)) {
+                parent = other.id;
+            }
+        }
+    }
+}
+
+if (mouse_check_button_released(mb_right)) {
+    selected = false;
+    sprite_index = spr_wormSegment;
+    with(obj_flyArrow)
+        instance_destroy();
+}
+
+if (flying = true) {
+    if (image_angle &gt; 350) {
+        image_angle = 0;
+    }
+    image_angle += 5;
+    speed -= .05;
+}
+
+if (flying &amp;&amp; instance_position(x,y, obj_bird) &amp;&amp; !stuckToBird) {
+    myBirdNow = instance_nearest(x,y, obj_bird);
+    myBirdNow.birdHealth -= size;
+    stuckToBird = true;
+    audio_play_sound(snd_hitMarker, 10, 0);
+    instance_destroy();
+}
+
+if (stuckToBird) {
+    x = myBirdNow.x;
+    y = myBirdNow.y;
+    speed = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Crawling
+
+if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch &amp;&amp; !global.war) {
     destXX = random_range(0, room_width);
     destXX = destXX - destXX % 4;
     destYY = random_range(512, room_height);
@@ -80,12 +156,12 @@ if (speed &gt; 0 &amp;&amp; !flying &amp;&amp; !fullGrown) {
         size += 1;
         counter = 0;
     }
-    if (size = 10) {
+    if (size = 8) {
         fullGrown = true;
     }
     if (fullGrown) {
         rand = random(3);
-        if (rand &gt; 2) {
+        if (rand &gt; 2.2) {
             movingToLaunch = true;
             destXX = random_range(0, room_width);
             destXX = destXX - destXX % 4;
@@ -146,37 +222,34 @@ if (!global.war &amp;&amp; !fullGrown &amp;&amp; (movingToLaunch || readyToLaunc
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(obj_flyArrow) &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; selected) {
-    move_towards_point(obj_flyArrow.x, obj_flyArrow.y, random_range(9, 15));
-    direction = direction + random_range(-24,24);
-    obj_flyArrow.alarm[0] = 1;
-    flying = true;
-}
+            <string>///Getting Flooded
 
-if (readyToLaunch &amp;&amp; !flying) {
-    if (point_distance(mouse_x, mouse_y, x, y) &lt; 16 &amp;&amp; mouse_check_button_released(mb_left)) {
-        selected = true;
-        if (!instance_exists(obj_flyArrow)) {
-            with (instance_create(mouse_x, mouse_y, obj_flyArrow)) {
-                parent = other.id;
-            }
-        }
-    }
-}
+if (instance_exists(obj_food))
+    nearest = instance_nearest(x,y,obj_food)
+else
+    nearest = noone;
 
-if (mouse_check_button_released(mb_right)) {
-    selected = false;
-    with(obj_flyArrow)
+if (instance_exists(nearest) &amp;&amp; point_distance(x,y, nearest.x, nearest.y) &lt; 32) {
+    with (nearest)
         instance_destroy();
+    myHealth += 50;
+    size += 5;
+    instance_create(x,y, obj_newWorm);
 }
 
-if (flying = true) {
-    if (image_angle &gt; 350) {
-        image_angle = 0;
-    }
-    image_angle += 5;
-    speed -= .05;
+
+
+if (instance_position(x,y, obj_flood)) {
+    myHealth -= 1 * global.snorkelSkill;
 }
+
+if (myHealth &lt; 0) {
+    newFood = instance_create(x,y, obj_food);
+    newFood.image_angle = image_angle;
+    instance_destroy();
+}
+
+
 </string>
           </argument>
         </arguments>

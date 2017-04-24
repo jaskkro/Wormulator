@@ -49,9 +49,12 @@
           <argument>
             <kind>1</kind>
             <string>x = mouse_x;
+if (!instance_exists(parent))
+    instance_destroy();
 if (mouse_y &lt; 488) {
     y = mouse_y;
-    image_angle = point_direction(x,y, parent.x, parent.y); 
+    if (instance_exists(parent))
+        image_angle = point_direction(x,y, parent.x, parent.y);
 }
 </string>
           </argument>

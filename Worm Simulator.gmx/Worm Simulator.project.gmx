@@ -8,6 +8,10 @@
     <sound>sound\msc_classical</sound>
     <sound>sound\msc_metal</sound>
     <sound>sound\snd_wilhelm</sound>
+    <sound>sound\snd_hitMarker</sound>
+    <sound>sound\snd_rain</sound>
+    <sound>sound\snd_khan</sound>
+    <sound>sound\snd_mlg</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Terrain">
@@ -15,17 +19,20 @@
       <sprite>sprites\spr_hardDirt</sprite>
       <sprite>sprites\spr_dirt</sprite>
       <sprite>sprites\spr_rock</sprite>
+      <sprite>sprites\spr_flood</sprite>
     </sprites>
     <sprites name="Worms">
       <sprite>sprites\spr_wormSegmentConnector</sprite>
       <sprite>sprites\spr_wormSegment</sprite>
       <sprite>sprites\spr_wormSelected</sprite>
+      <sprite>sprites\spr_wormFood</sprite>
     </sprites>
     <sprites name="Character Select Menu">
       <sprite>sprites\spr_charSelectBg</sprite>
       <sprite>sprites\spr_chadPortrait</sprite>
       <sprite>sprites\spr_rightArrow</sprite>
       <sprite>sprites\spr_leftArrow</sprite>
+      <sprite>sprites\spr_menuLeft</sprite>
       <sprite>sprites\spr_chadName</sprite>
       <sprite>sprites\spr_playCharScreen</sprite>
       <sprite>sprites\spr_charSelectTitle</sprite>
@@ -38,6 +45,9 @@
       <sprite>sprites\spr_play</sprite>
       <sprite>sprites\spr_instructions</sprite>
       <sprite>sprites\spr_mainMenu</sprite>
+      <sprite>sprites\spr_accuracy</sprite>
+      <sprite>sprites\spr_magnetism</sprite>
+      <sprite>sprites\spr_snorkel</sprite>
     </sprites>
     <sprites name="Instructions">
       <sprite>sprites\spr_instructionsBackground</sprite>
@@ -46,6 +56,9 @@
     <sprites name="Birds">
       <sprite>sprites\spr_birdRight</sprite>
       <sprite>sprites\spr_birdLeft</sprite>
+      <sprite>sprites\spr_soul</sprite>
+      <sprite>sprites\spr_eagleRight</sprite>
+      <sprite>sprites\spr_eagleLeft</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -65,7 +78,17 @@
       <object>objects\obj_soundler</object>
       <object>objects\obj_warButton</object>
       <object>objects\obj_littleBird</object>
+      <object>objects\obj_eagle</object>
       <object>objects\obj_flyArrow</object>
+      <object>objects\obj_bird</object>
+      <object>objects\obj_flood</object>
+      <object>objects\obj_manager</object>
+      <object>objects\obj_food</object>
+      <object>objects\obj_soul</object>
+      <object>objects\obj_magnetismBut</object>
+      <object>objects\obj_accBut</object>
+      <object>objects\obj_snorkelBut</object>
+      <object>objects\obj_powerUpButton</object>
     </objects>
     <objects name="Character Select">
       <object>objects\obj_arrow</object>
@@ -91,10 +114,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_gameScreen</room>
     <room>rooms\rm_mainMenu</room>
     <room>rooms\rm_instructions</room>
     <room>rooms\rm_charSelect</room>
+    <room>rooms\rm_gameScreen</room>
     <room>rooms\rm_results</room>
   </rooms>
   <help>
