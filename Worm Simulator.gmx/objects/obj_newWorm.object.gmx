@@ -30,6 +30,7 @@ readyToLaunch = false;
 movingToLaunch = false;
 flying = false;
 stuckToBird = false;
+selected = false;
 
 //Movement
 destXX = 0;
@@ -64,7 +65,7 @@ fullGrown = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch) {
+            <string>if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch &amp;&amp; !global.war) {
     destXX = random_range(0, room_width);
     destXX = destXX - destXX % 4;
     destYY = random_range(512, room_height);
@@ -104,6 +105,103 @@ if (movingToLaunch &amp;&amp; point_distance(x,y, destXX, destYY) &lt; 6) {
     speed = 0;
     movingToLaunch = false;
     readyToLaunch = true;
+}
+
+if (global.war &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch) {
+    movingToLaunch = true;
+    destXX = random_range(0, room_width);
+    destXX = destXX - destXX % 4;
+    destYY = 512;
+    move_towards_point(destXX, destYY, wormSpeed);
+    image_angle = direction;
+}
+
+if (!global.war &amp;&amp; !fullGrown &amp;&amp; (movingToLaunch || readyToLaunch)) {
+    movingToLaunch = false;
+    readyToLaunch = false;
+    destXX = random_range(0, room_width);
+    destXX = destXX - destXX % 4;
+    destYY = random_range(512, room_height);
+    destYY = destYY - destYY % 4;
+    move_towards_point(destXX, destYY, wormSpeed);
+    image_angle = direction;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(obj_flyArrow) &amp;&amp; mouse_check_button_released(mb_left) &amp;&amp; selected) {
+    move_towards_point(obj_flyArrow.x, obj_flyArrow.y, random_range(9, 15));
+    direction = direction + random_range(-24,24);
+    obj_flyArrow.alarm[0] = 1;
+    flying = true;
+}
+
+if (readyToLaunch &amp;&amp; !flying) {
+    if (point_distance(mouse_x, mouse_y, x, y) &lt; 16 &amp;&amp; mouse_check_button_released(mb_left)) {
+        selected = true;
+        if (!instance_exists(obj_flyArrow)) {
+            with (instance_create(mouse_x, mouse_y, obj_flyArrow)) {
+                parent = other.id;
+            }
+        }
+    }
+}
+
+if (mouse_check_button_released(mb_right)) {
+    selected = false;
+    with(obj_flyArrow)
+        instance_destroy();
+}
+
+if (flying = true) {
+    if (image_angle &gt; 350) {
+        image_angle = 0;
+    }
+    image_angle += 5;
+    speed -= .05;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!stuckToBird) {
+    audio_play_sound(snd_wilhelm, 10, 0);
+    instance_destroy();
 }
 </string>
           </argument>
