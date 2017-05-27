@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>birdHealth = 300//random_range(18, 40);
+            <string>birdHealth = 500//random_range(18, 40);
 target = noone;
 idle = true;
 birdSpeed = 8;
@@ -137,7 +137,7 @@ if (instance_exists(target)) {
     if(point_distance(x,y, target.x, target.y) &lt; 8 &amp;&amp; !target.stuckToBird) {
         with(target)
             instance_destroy();
-        audio_play_sound(snd_wilhelm, 10, 0);
+        audio_play_sound(eating, 10, 0);
         target = noone;
         speed = 0;
         alarm[0] = 1;
@@ -159,7 +159,7 @@ if (y &gt; 512 &amp;&amp; !dead) {
 if (birdHealth &lt; 0 &amp;&amp; !dead) {
     dead = true;
     audio_play_sound(snd_khan, 10, 0);
-    sprite_index = spr_birdRight;
+    sprite_index = spr_eagleRight;
     image_angle = 270;
     image_speed = 0;
     direction = 270;

@@ -31,7 +31,7 @@ global.soulsAbsorbed = 0;
 global.snorkelSkill = 1;
 global.magnetismSkill = 1;
 global.accuracy = 1;
-numBirds = 0;
+global.numBirds = 0;
 
 </string>
           </argument>
@@ -60,12 +60,12 @@ timeToNextBird -= 1;
 
 if (timeToNextFlood &lt; 0) {
     instance_create(0,0, obj_flood);
-    timeToNextFlood = random_range(1200,2400);
+    timeToNextFlood = random_range(1000,1800);
 }
 
 if (timeToNextBird &lt; 0) {
     theBird = instance_create(random_range(0, room_width),0, obj_littleBird);
-    timeToNextBird = random_range(600,1500);
+    timeToNextBird = random_range(500,1000);
     numBirds += 1;
     if (numBirds &gt; 9) {
         with (theBird)

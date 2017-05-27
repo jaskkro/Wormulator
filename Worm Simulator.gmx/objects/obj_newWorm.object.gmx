@@ -234,7 +234,9 @@ if (instance_exists(nearest) &amp;&amp; point_distance(x,y, nearest.x, nearest.y
         instance_destroy();
     myHealth += 50;
     size += 5;
-    instance_create(x,y, obj_newWorm);
+    randers = random(4)
+    if (randers &gt; 3)
+        instance_create(x,y, obj_newWorm);
 }
 
 

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>birdHealth = random_range(25, 65);
+            <string>birdHealth = random_range(25, 50) * (global.numBirds/2) + 1;
 target = noone;
 idle = true;
 birdSpeed = 6;
@@ -137,7 +137,7 @@ if (instance_exists(target)) {
     if(point_distance(x,y, target.x, target.y) &lt; 8 &amp;&amp; !target.stuckToBird) {
         with(target)
             instance_destroy();
-        audio_play_sound(snd_wilhelm, 10, 0);
+        audio_play_sound(eating, 10, 0);
         target = noone;
         speed = 0;
         alarm[0] = 1;

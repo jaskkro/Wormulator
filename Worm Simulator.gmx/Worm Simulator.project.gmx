@@ -12,6 +12,7 @@
     <sound>sound\snd_rain</sound>
     <sound>sound\snd_khan</sound>
     <sound>sound\snd_mlg</sound>
+    <sound>sound\eating</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Terrain">
