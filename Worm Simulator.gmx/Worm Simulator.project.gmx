@@ -61,6 +61,7 @@
       <sprite>sprites\spr_eagleRight</sprite>
       <sprite>sprites\spr_eagleLeft</sprite>
     </sprites>
+    <sprite>sprites\spr_UIbar</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkr_testSky</background>
@@ -74,6 +75,7 @@
       <object>objects\obj_dirtGrass</object>
       <object>objects\obj_wormSegment</object>
       <object>objects\obj_newWorm</object>
+      <object>objects\obj_menuWorm</object>
       <object>objects\obj_worm</object>
       <object>objects\obj_joint</object>
       <object>objects\obj_soundler</object>
@@ -90,6 +92,7 @@
       <object>objects\obj_accBut</object>
       <object>objects\obj_snorkelBut</object>
       <object>objects\obj_powerUpButton</object>
+      <object>objects\obj_UIbar</object>
     </objects>
     <objects name="Character Select">
       <object>objects\obj_arrow</object>
