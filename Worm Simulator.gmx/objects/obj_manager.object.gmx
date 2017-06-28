@@ -66,15 +66,15 @@ if (timeToNextFlood &lt; 0) {
 if (timeToNextBird &lt; 0) {
     theBird = instance_create(random_range(0, room_width),0, obj_littleBird);
     timeToNextBird = random_range(500,1000);
-    numBirds += 1;
-    if (numBirds &gt; 9) {
+    global.numBirds += 1;
+    if (global.numBirds &gt; 9) {
         with (theBird)
             instance_destroy();
         instance_create(0,0, obj_eagle);
     }
 }
 
-if (!instance_exists(obj_newWorm) &amp;&amp; numBirds &gt; 0) {
+if (!instance_exists(obj_newWorm) &amp;&amp; global.numBirds &gt; 0) {
     show_message("You Lose!")
     room_goto(0);
 }
