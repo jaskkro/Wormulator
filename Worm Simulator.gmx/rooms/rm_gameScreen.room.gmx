@@ -223,7 +223,7 @@
     <instance objName="obj_rock" x="1568" y="672" name="inst_58C68581" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1568" y="608" name="inst_C2B4EA9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dirtGrass" x="1568" y="544" name="inst_06458698" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_UIbar" x="1760" y="544" name="inst_C0D80396" locked="0" code="" scaleX="1.15107917785645" scaleY="1.00740742683411" colour="4294967295" rotation="0"/>
+    <instance objName="obj_UIbar" x="1771" y="802" name="inst_C0D80396" locked="0" code="" scaleX="1.23021578788757" scaleY="0.537962973117828" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1120" y="1056" name="inst_0F1EC474" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1184" y="1056" name="inst_CEDA6F78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rock" x="1248" y="1056" name="inst_E51F9EE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

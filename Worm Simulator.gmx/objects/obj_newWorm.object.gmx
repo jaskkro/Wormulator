@@ -142,7 +142,7 @@ if (stuckToBird) {
             <string>///Crawling
 
 if (destXX = 0 || point_distance(x,y, destXX, destYY) &lt; 10 &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch &amp;&amp; !global.war) {
-    destXX = random_range(0, room_width);
+    destXX = random_range(0, room_width - obj_UIbar.sprite_width);
     destXX = destXX - destXX % 4;
     destYY = random_range(512, room_height);
     destYY = destYY - destYY % 4;
@@ -163,7 +163,7 @@ if (speed &gt; 0 &amp;&amp; !flying &amp;&amp; !fullGrown) {
         rand = random(3);
         if (rand &gt; 2.2) {
             movingToLaunch = true;
-            destXX = random_range(0, room_width);
+            destXX = random_range(0, room_width - obj_UIbar.sprite_width);
             destXX = destXX - destXX % 4;
             destYY = 512;
             move_towards_point(destXX, destYY, wormSpeed);
@@ -185,7 +185,7 @@ if (movingToLaunch &amp;&amp; point_distance(x,y, destXX, destYY) &lt; 6) {
 
 if (global.war &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch) {
     movingToLaunch = true;
-    destXX = random_range(0, room_width);
+    destXX = random_range(0, room_width - obj_UIbar.sprite_width);
     destXX = destXX - destXX % 4;
     destYY = 512;
     move_towards_point(destXX, destYY, wormSpeed);
@@ -195,13 +195,32 @@ if (global.war &amp;&amp; !movingToLaunch &amp;&amp; !readyToLaunch) {
 if (!global.war &amp;&amp; !fullGrown &amp;&amp; (movingToLaunch || readyToLaunch)) {
     movingToLaunch = false;
     readyToLaunch = false;
-    destXX = random_range(0, room_width);
+    destXX = random_range(0, room_width - obj_UIbar.sprite_width);
     destXX = destXX - destXX % 4;
     destYY = random_range(512, room_height);
     destYY = destYY - destYY % 4;
     move_towards_point(destXX, destYY, wormSpeed);
     image_angle = direction;
 }
+
+//Eating
+
+if (instance_exists(obj_food))
+    nearest = instance_nearest(x,y,obj_food)
+else
+    nearest = noone;
+
+if (instance_exists(nearest) &amp;&amp; point_distance(x,y, nearest.x, nearest.y) &lt; 32 &amp;&amp; 
+    !instance_position(x,y, obj_flood)) {
+    with (nearest)
+        instance_destroy();
+    myHealth += 50;
+    size += 5;
+    randers = random(4)
+    if (randers &gt; 3)
+        instance_create(x,y, obj_newWorm);
+}
+
 </string>
           </argument>
         </arguments>
@@ -223,23 +242,6 @@ if (!global.war &amp;&amp; !fullGrown &amp;&amp; (movingToLaunch || readyToLaunc
           <argument>
             <kind>1</kind>
             <string>///Getting Flooded
-
-if (instance_exists(obj_food))
-    nearest = instance_nearest(x,y,obj_food)
-else
-    nearest = noone;
-
-if (instance_exists(nearest) &amp;&amp; point_distance(x,y, nearest.x, nearest.y) &lt; 32) {
-    with (nearest)
-        instance_destroy();
-    myHealth += 50;
-    size += 5;
-    randers = random(4)
-    if (randers &gt; 3)
-        instance_create(x,y, obj_newWorm);
-}
-
-
 
 if (instance_position(x,y, obj_flood)) {
     myHealth -= 1 * global.snorkelSkill;
